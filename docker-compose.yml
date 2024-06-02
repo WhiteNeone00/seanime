@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  seanime:
+    image: 5rahim/seanime:latest
+    container_name: seanime
+    volumes:
+      - /var/lib/pterodactyl/volumes/946376e9-ce82-4bfb-a709-c5c6d6e75d4f:/collection
+      - /var/lib/pterodactyl/volumes/946376e9-ce82-4bfb-a709-c5c6d6e75d4f:/config
+    ports:
+      - 43211:43211
+    environment:
+      - SEANIME_DATA_DIR=/config
+      - SEANIME_SERVER_HOST=0.0.0.0
+      - SEANIME_SERVER_PORT=43211
+      - PUID=0
+      - PGID=0
+    restart: unless-stopped
+    network_mode: "host"
